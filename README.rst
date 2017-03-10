@@ -24,6 +24,11 @@ Coding Style
 Follow `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_.
 Use some extension of your editor to validate the code automatically.
 
+Test
+----
+
+Test the source code by :code:`make test`.
+
 Document
 --------
 
