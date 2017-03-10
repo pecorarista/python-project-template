@@ -14,7 +14,7 @@ Installation
 
 .. code-block:: bash
 
-   git clone git@github.com:pecorarista/nyan.git
+   git clone https://github.com/pecorarista/python-project-template
    cd nyan
    pip install -e .
 
