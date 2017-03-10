@@ -1,11 +1,12 @@
 author  = "Miyazawa Akira"
 project = "nyan"
-version = "0.1"
+version = "0.1.0"
 
 docroot = "docs"
 docconf = "$(docroot)/source/conf.py"
+docport = "8888"
 
-python  = $(shell python -V 2>&1 | sed -e 's@python\s\+\([23]\).*@\1@i')
+python  = $(shell python -c 'from __future__ import print_function; import sys; print(sys.version_info.major)')
 
 .PHONY: test
 test:
@@ -20,9 +21,9 @@ uninstall:
 	@pip uninstall $(project) -y || true
 
 .PHONY: doc
-doc: docs/Makefile docs/build/html/index.html
+doc: $(docroot)/Makefile $(docroot)/build/html/index.html
 
-docs/Makefile:
+$(docroot)/Makefile:
 	@sphinx-quickstart \
 	--quiet \
 	--sep \
@@ -41,7 +42,7 @@ docs/Makefile:
 	@sed -i -e "s@^[\s#]*extensions\s*=.*\]@extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']@" \
 		$(docconf)
 
-docs/build/html/index.html:
+$(docroot)/build/html/index.html:
 	$(MAKE) -C $(docroot) html
 
 .PHONY: clean
@@ -52,11 +53,11 @@ clean:
 	fi
 
 .PHONY: preview
-preview: docs/build/html/index.html
+preview: $(docroot)/build/html/index.html
 	@cd $(docroot)/build/html; \
 		if [ $(python) = "3" ]; \
 		then \
-			python -m http.server; \
+			python -m http.server $(port); \
 		else \
-			python -m SimpleHTTPServer; \
+			python -m SimpleHTTPServer $(port); \
 		fi

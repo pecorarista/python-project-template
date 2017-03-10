@@ -14,9 +14,41 @@ Installation
 
 .. code-block:: bash
 
-    git clone git@github.com:mynlp/nyan.git
-    cd nyan
-    pip install -e .
+   git clone git@github.com:pecorarista/nyan.git
+   cd nyan
+   pip install -e .
+
+Usage
+-----
+
+1. Run as a CLI tool.
+
+   .. code-block:: bash
+
+      from nyan import Cat
+
+      cat = Cat(name="Artemis",
+                breed="Russian Blue",
+                sex=Sexes.FEMALE,
+                age=4)
+      print(cat.praise())
+
+2. Import the project as a library.
+
+   .. code-block:: bash
+
+      nyan \
+          --name Chomusuke \
+          --breed "Russian Blue" \
+          --sex male \
+
+   The command shows the following message.
+
+   .. code-block::
+
+      This is my cat, Chomusuke.
+      He is a Russian Blue.
+
 
 Coding Style
 ------------

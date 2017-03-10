@@ -17,10 +17,16 @@ def read_csv(filename, delimiter='\t'):
     with open(filename, mode='r') as f:
         for line in f:
             fields = line.strip().split(delimiter)
+
+            try:
+                sex = Sexes(fields[3])
+            except ValueError:
+                sex = Sexes('others')
+
             cat = Cat(name=fields[0],
                       breed=fields[1],
                       age=int(fields[2]),
-                      sex=Sexes(int(fields[3])))
+                      sex=sex)
             results.append(cat)
 
     return results

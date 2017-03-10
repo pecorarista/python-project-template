@@ -24,12 +24,12 @@ class TestCat(unittest.TestCase):
         self.luna.add_age()
         self.assertEqual(self.luna.age, 8)
 
-    def test_admire(self):
+    def test_praise(self):
 
-        self.assertEqual(self.luna.admire().split('\n')[1],
+        self.assertEqual(self.luna.praise().split('\n')[1],
                          'She is a Russian Blue.')
 
-        self.assertEqual(self.tom.admire().split('\n')[1],
+        self.assertEqual(self.tom.praise().split('\n')[1],
                          'He is an Abyssinian.')
 
 

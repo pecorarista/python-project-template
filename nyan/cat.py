@@ -21,23 +21,27 @@ class Cat(object):
         age (int): The age of the cat.
     """
 
-    def __init__(self, name, breed, sex, age):
+    def __init__(self,
+                 name="Chomusuke",
+                 breed="Russian Blue",
+                 sex=Sexes.OTHERS,
+                 age=1):
         """
         Args:
-            name (str)
-            breed (str)
-            sex (Sexes)
-            age (int)
+            name (str, optional)
+            breed (str, optional)
+            sex (Sexes, optional)
+            age (int, optional)
         """
         self.name = name
         self.breed = breed
         self.sex = sex
-        self.age = age
+        self.age = int(age)
 
     def add_age(self):
         self.age += 1
 
-    def admire(self):
+    def praise(self):
         """
         Returns:
             str

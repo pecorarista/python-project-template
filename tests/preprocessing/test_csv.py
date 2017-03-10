@@ -15,12 +15,12 @@ class TestCSV(unittest.TestCase):
                 'Artemis',
                 'American Shorthair',
                 '2',
-                '0']),
+                'female']),
             '\t'.join([
                 'Liz',
                 'Siamese',
                 '3',
-                '0'])])
+                'male'])])
 
     def test_read_csv(self):
 

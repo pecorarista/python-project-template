@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 setup(name='nyan',
-      version='0.1',
+      version='0.1.0',
       description='A template for Python projects',
       author='Miyazawa Akira',
       author_email='miyazawa-a@nii.ac.jp',
