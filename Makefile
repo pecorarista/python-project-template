@@ -29,7 +29,7 @@ $(docroot)/Makefile:
 	--sep \
 	-v $(version) \
 	--project $(project) \
-	--author=$(author) \
+	--author $(author) \
 	--ext-autodoc \
 	--makefile \
 	--no-batchfile \
@@ -42,7 +42,7 @@ $(docroot)/Makefile:
 	@sed -i -e "s@^[\s#]*extensions\s*=.*\]@extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']@" \
 		$(docconf)
 
-$(docroot)/build/html/index.html:
+$(docroot)/build/html/index.html: $(docroot)/Makefile
 	$(MAKE) -C $(docroot) html
 
 .PHONY: clean
