@@ -21,26 +21,13 @@ Installation
 Usage
 -----
 
-1. Run as a CLI tool.
+1. Use this as a CLI tool.
 
    .. code-block:: bash
 
-      from nyan import Cat
-
-      cat = Cat(name="Artemis",
-                breed="Russian Blue",
-                sex=Sexes.FEMALE,
-                age=4)
-      print(cat.praise())
-
-2. Import the project as a library.
-
-   .. code-block:: bash
-
-      nyan \
-          --name Chomusuke \
+      nyan --name Chomusuke \
           --breed "Russian Blue" \
-          --sex male \
+          --sex male
 
    The command shows the following message.
 
@@ -49,6 +36,16 @@ Usage
       This is my cat, Chomusuke.
       He is a Russian Blue.
 
+2. Import the project as a library.
+
+   .. code-block:: bash
+
+      from nyan import Cat
+
+      cat = Cat(name="Artemis",
+                breed="Russian Blue",
+                sex=Sexes.FEMALE)
+      print(cat.praise())
 
 Coding Style
 ------------
@@ -69,7 +66,7 @@ Follow the format of `Sphinx <http://www.sphinx-doc.org/en/stable/>`_.
 There are several major styles in writing docstring for Sphinx.
 You can see an example `here (Google Style Python Docstrings) <http://www.sphinx-doc.org/en/stable/ext/example_google.html>`_.
 
-To convert docstrings into HTML pages, edit author, project, and version variable in :code:`Makefile` and run :code:`make doc`.
+To convert docstrings into HTML pages, first edit author, project, and version in :code:`Makefile`. Then run :code:`make doc`.
 It automatically configures Sphinx and creates some files under directory :code:`docs`.
 
 Edit :code:`*.rst` file to document your source code in an organized format.
