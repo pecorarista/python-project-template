@@ -13,11 +13,17 @@ class Sexes(Enum):
 class Cat(object):
     """Class that represents a cat.
 
+    Args:
+        name (str, optional): The name of the cat.
+        breed (str, optional): The breed of the cat. For example,
+            American Shorthair, Abyssinian, or Russian Blue.
+        sex (Sexes, optional): The sex of the cat: FEMALE, MALE, or OTHERS.
+        age (int, optional): The age of the cat.
+
     Attributes:
         name (str): The name of the cat.
-        breed (str): The breed of the cat. For example, American Shorthair,
-            Abyssinian, or Russian Blue.
-        sex (Sexes): The sex of the cat: FEMALE, MALE, or OTHERS.
+        breed (str): The breed of the cat.
+        sex (Sexes): The sex of the cat.
         age (int): The age of the cat.
     """
 
@@ -26,13 +32,6 @@ class Cat(object):
                  breed="Russian Blue",
                  sex=Sexes.OTHERS,
                  age=1):
-        """
-        Args:
-            name (str, optional)
-            breed (str, optional)
-            sex (Sexes, optional)
-            age (int, optional)
-        """
         self.name = name
         self.breed = breed
         self.sex = sex

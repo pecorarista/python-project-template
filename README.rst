@@ -77,6 +77,6 @@ Then :code:`make doc; make preview` to view the pages on the browser.
     An Example of API Document
     --------------------------
     .. automodule:: nyan.cat
-        :members:
-        :undoc-members:
-        :show-inheritance:
+       :members:
+       :undoc-members:
+       :show-inheritance:

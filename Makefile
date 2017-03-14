@@ -21,26 +21,33 @@ uninstall:
 	@pip uninstall $(project) -y || true
 
 .PHONY: doc
-doc: $(docroot)/Makefile $(docroot)/build/html/index.html
+doc: $(docroot)/Makefile
 
 $(docroot)/Makefile:
-	@sphinx-quickstart \
-	--quiet \
-	--sep \
-	-v $(version) \
-	--project $(project) \
-	--author $(author) \
-	--ext-autodoc \
-	--makefile \
-	--no-batchfile \
-	docs
-	@sed -i -e 's@^\s*#\s*import os\s*@import os@' $(docconf)
-	@sed -i -e 's@^\s*#\s*import sys\s*@import sys@' $(docconf)
-	@sed -i -e \
-		"s@^\s*#\s*sys\.path\.insert(0,\s*os\.path\.abspath('\.'))@sys.path.insert(0, os.path.abspath('../..'))@" \
-		$(docconf)
-	@sed -i -e "s@^[\s#]*extensions\s*=.*\]@extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']@" \
-		$(docconf)
+	@if ! find $(docroot) -type f > /dev/null 2>&1; \
+	then \
+		sphinx-quickstart \
+			--quiet \
+			--sep \
+			-v $(version) \
+			--project $(project) \
+			--author $(author) \
+			--ext-autodoc \
+			--makefile \
+			--no-batchfile \
+			docs; \
+		sed -i -e 's@^\s*#\s*import os\s*@import os@' $(docconf); \
+		sed -i -e 's@^\s*#\s*import sys\s*@import sys@' $(docconf); \
+		sed -i \
+			-e "s@^\s*#\s*sys\.path\.insert(0,\s*os\.path\.abspath('\.'))@sys.path.insert(0, os.path.abspath('../..'))@" \
+			$(docconf); \
+		if ! grep 'sphinx\.ext\.napoleon' $(docconf); \
+		then \
+			sed -i \
+			-e "s@[\"']sphinx\.ext\.autodoc[\"']\s*,@'sphinx.ext.autodoc', 'sphinx.ext.napoleon'@" \
+			$(docconf); \
+		fi; \
+	fi
 
 $(docroot)/build/html/index.html: $(docroot)/Makefile
 	$(MAKE) -C $(docroot) html
