@@ -14,9 +14,9 @@ Installation
 
 .. code-block:: bash
 
-   git clone https://github.com/pecorarista/python-project-template
+   git clone https://github.com/pecorarista/python-project-template.git
    cd nyan
-   pip install -e .
+   pip install .
 
 Usage
 -----
@@ -36,7 +36,7 @@ Usage
       This is my cat, Chomusuke.
       He is a Russian Blue.
 
-2. Import the project as a library.
+2. Import the project as a library as below.
 
    .. code-block:: bash
 
@@ -51,12 +51,20 @@ Coding Style
 ------------
 
 Follow `PEP 8 <https://www.python.org/dev/peps/pep-0008/>`_.
-Use some extension of your editor to validate the code automatically.
+Run `autopep8 <https://pypi.python.org/pypi/autopep8>`_,
+or use a plugin for your editor that checks if your code follows PEP 8.
 
 Test
 ----
 
-Test the source code by :code:`make test`.
+You can test the source code by :code:`make test`.
+For detail information, refer to the official documents,
+
+* `unittest <https://docs.python.org/3/library/unittest.html>`_.
+* `doctest <https://docs.python.org/3/library/doctest.html>`_.
+
+unittest and doctest can be integrated.
+Please take a look at `<tests/test_util.py>`_.
 
 Document
 --------
@@ -66,17 +74,9 @@ Follow the format of `Sphinx <http://www.sphinx-doc.org/en/stable/>`_.
 There are several major styles in writing docstring for Sphinx.
 You can see an example `here (Google Style Python Docstrings) <http://www.sphinx-doc.org/en/stable/ext/example_google.html>`_.
 
-To convert docstrings into HTML pages, first edit author, project, and version in :code:`Makefile`. Then run :code:`make doc`.
-It automatically configures Sphinx and creates some files under directory :code:`docs`.
+First edit :code:`author`, :code:`project`, and :code:`version` in `<Makefile>`_.
+Then run :code:`make doc`.
+It automatically configures Sphinx and creates some files under `<docs>`_.
+You can find some examples in `<docs-example>`_.
 
-Edit :code:`*.rst` file to document your source code in an organized format.
-Then :code:`make doc; make preview` to view the pages on the browser.
-
-.. code-block:: rst
-
-    An Example of API Document
-    --------------------------
-    .. automodule:: nyan.cat
-       :members:
-       :undoc-members:
-       :show-inheritance:
+.. image:: sphinx-example.png
