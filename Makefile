@@ -10,7 +10,7 @@ python  = $(shell python -c 'from __future__ import print_function; import sys; 
 
 .PHONY: test
 test:
-	@python -m unittest -v
+	@python -m unittest discover -v
 
 .PHONY: install
 install:

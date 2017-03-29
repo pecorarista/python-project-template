@@ -41,7 +41,7 @@ class Cat(object):
         self.age += 1
 
     def praise(self):
-        """
+        """Generate sentences that praise a cat.
         Returns:
             str
         """
