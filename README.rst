@@ -38,7 +38,7 @@ Usage
 
 2. Import the project as a library as below.
 
-   .. code-block:: bash
+   .. code-block:: python
 
       from nyan import Cat
 
