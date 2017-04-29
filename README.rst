@@ -9,15 +9,6 @@ Requirements
 
 * Python 2.7+ or 3.6+
 
-Installation
-------------
-
-.. code-block:: bash
-
-   git clone https://github.com/pecorarista/python-project-template.git
-   cd nyan
-   pip install .
-
 Usage
 -----
 
@@ -29,7 +20,7 @@ Usage
           --name Chomusuke \
           --breed "Russian Blue" \
           --sex male
-      # or if you have install by `pip`,
+      # or if you have installed the program using `pip`,
       nyan \
           --name Chomusuke \
           --breed "Russian Blue" \
@@ -52,6 +43,17 @@ Usage
                 breed="Russian Blue",
                 sex=Sexes.FEMALE)
       print(cat.praise())
+
+
+Installation using pip
+----------------------
+
+.. code-block:: bash
+
+   git clone https://github.com/pecorarista/python-project-template.git
+   cd nyan
+   pip install .
+
 
 Coding Style
 ------------
