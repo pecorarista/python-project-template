@@ -62,4 +62,6 @@ def main():
 
     print(cat.praise())
 
-    sys.exit()
+
+if __name__ == '__main__':
+    sys.exit(main())

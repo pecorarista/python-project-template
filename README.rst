@@ -25,11 +25,17 @@ Usage
 
    .. code-block:: bash
 
-      nyan --name Chomusuke \
+      nyan \
+          --name Chomusuke \
+          --breed "Russian Blue" \
+          --sex male
+      # or
+      python -m nyan \
+          --name Chomusuke \
           --breed "Russian Blue" \
           --sex male
 
-   The command shows the following message.
+   Then, you will get the following message.
 
    .. code-block::
 
