@@ -25,12 +25,12 @@ Usage
 
    .. code-block:: bash
 
-      nyan \
+      python -m nyan \
           --name Chomusuke \
           --breed "Russian Blue" \
           --sex male
-      # or
-      python -m nyan \
+      # or if you have install by `pip`,
+      nyan \
           --name Chomusuke \
           --breed "Russian Blue" \
           --sex male
