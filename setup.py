@@ -7,5 +7,5 @@ setup(name='nyan',
       author='Miyazawa Akira',
       author_email='miyazawa-a@nii.ac.jp',
       url='https://github.com/pecorarista/python-project-template',
-      package=find_packages(),
+      packages=find_packages(),
       entry_points={"console_scripts": ["nyan = nyan.cmdline:main"]})
