@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
-
 import sys
-import nyan.cmdline as cmdline
+from nyan.main import main
 
 
 if __name__ == '__main__':
-    sys.exit(cmdline.main())
+    sys.exit(main())

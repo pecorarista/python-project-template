@@ -1,1 +1,1 @@
-__version__ = '0.1'
+from nyan.__version__ import __version__

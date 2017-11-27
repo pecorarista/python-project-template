@@ -1,11 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import print_function
-
 import sys
 import argparse
 
-from nyan import __version__
+from nyan.__version__ import __version__
 from nyan.cat import Cat, Sexes
 
 

@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
+from typing import Any
 
 
-def duplicate(w, is_hyphenated=False):
+def duplicate(w: str, is_hyphenated: bool=False):
     """Function that is defined to demonstrate how to use doctest.
 
     >>> duplicate('人')
@@ -20,7 +18,7 @@ def duplicate(w, is_hyphenated=False):
     return "{}-{}".format(w, w) if is_hyphenated else "{}{}".format(w, w)
 
 
-def mathematical_function(x):
+def mathematical_function(x: Any):
     r"""Function that is defined to demonstrate
     how to document mathematical expressions.
 

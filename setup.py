@@ -1,11 +1,21 @@
-from setuptools import setup, find_packages
+import os
+from setuptools import setup
 
+name = 'nyan'
+here = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(here, name, '__version__.py')) as f:
+    version = f.readline() \
+        .split('=')[1] \
+        .replace('"', '') \
+        .replace("'", '') \
+        .strip()
 
-setup(name='nyan',
-      version='0.1.0',
-      description='A template for Python projects',
+setup(name=name,
+      version=version,
+      description='Financial Article Generator',
       author='Miyazawa Akira',
       author_email='miyazawa-a@nii.ac.jp',
       url='https://github.com/pecorarista/python-project-template',
-      packages=find_packages(),
-      entry_points={"console_scripts": ["nyan = nyan.cmdline:main"]})
+      packages=['nyan',
+                'nyan.preprocessing'],
+      entry_points={"console_scripts": ["nyan = nyan.main:main"]})
