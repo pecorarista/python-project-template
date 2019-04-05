@@ -18,4 +18,5 @@ setup(name=name,
       url='https://github.com/pecorarista/python-project-template',
       packages=['nyan',
                 'nyan.preprocessing'],
-      entry_points={"console_scripts": ["nyan = nyan.main:main"]})
+      entry_points={"console_scripts": ["nyan = nyan.main:main"]},
+      test_suite='tests')
