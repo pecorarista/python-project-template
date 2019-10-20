@@ -15,8 +15,7 @@ pipenv shell
 Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/).
 
 ```bash
-flake8 mypkg
-flake8 tests
+flake8 mypkg tests
 ```
 
 ## Order of import-statements
@@ -35,8 +34,7 @@ from mypkg.another_module import another_function
 This is automatically achieved by `isort`.
 
 ```bash
-isort --recursive mypkg
-isort --recursive tests
+isort --recursive mypkg tests
 ```
 
 ## Testing
