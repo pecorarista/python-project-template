@@ -2,5 +2,6 @@ __pycache__
 *.egg-info
 .coverage
 
-resources
+resources/*
+!resources/corpora/lyrics/greensleeves.txt
 .venv/
