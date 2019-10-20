@@ -2,10 +2,16 @@ version: 2
 jobs:
   build:
     docker:
-      - image: kennethreitz/pipenv
+      - image: circleci/python:3.7.4-buster
         user: circleci
     steps:
       - checkout
+      - run:
+          name: Install pipenv
+          command: |
+            sudo apt update -y
+            sudo apt upgrade -y
+            sudo apt install pipenv
       - run:
           name: Print the working directory
           command: pwd
@@ -14,7 +20,8 @@ jobs:
           command: whoami
       - run:
           name: Create `.env`
-          command: echo "WORKON_HOME=/home/circleci/pipenv\n" > .env
+          command: |
+            echo "WORKON_HOME=/home/circleci/.pipenv/python-project-template\nPIPENV_CACHE_DIR=/home/circleci/.pipenv-cache\n" > .env
       - restore_cache:
           keys:
             - python-project-template-{{ checksum "Pipfile.lock" }}
@@ -24,11 +31,12 @@ jobs:
       - save_cache:
           key: python-project-template-{{ checksum "Pipfile.lock" }}
           paths:
-            - /home/circleci/pipenv
+            - /home/circleci/.pipenv/python-project-template
+            - /home/circleci/.pipenv-cache
       - run:
           name: Check formats
           command: |
-            source /home/circleci/pipenv/bin/activate
+            pipenv shell
             flake8 mypkg
             flake8 tests
             isort --recursive --check-only mypkg
@@ -36,5 +44,5 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            source /home/circleci/pipenv/bin/activate
+            pipenv shell
             pytest
