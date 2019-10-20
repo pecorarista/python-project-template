@@ -1,0 +1,3 @@
+[database]
+uri = 'sqlite:///mypkg.db'
+uri_test = 'sqlite://'

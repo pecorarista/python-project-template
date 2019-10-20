@@ -4,11 +4,10 @@ Template for Python projects. The sample package is assumed to be released as a 
 
 ## Environment
 
-This project assumes that users have installed Anaconda Python 3.7.
-To install required libraries, create a new environment by using [environment.yaml](environment.yaml).
-
 ```bash
-conda env create -f environment.yaml -n mypkg
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ## Coding Style
@@ -20,7 +19,7 @@ flake8 mypkg
 flake8 tests
 ```
 
-## Import Order
+## Order of import-statements
 
 Order import-statements as the following.
 
@@ -33,7 +32,7 @@ from mypkg.some_module import some_function
 from mypkg.another_module import another_function
 ```
 
-This is automatically achieved by [isort]{.title-ref}.
+This is automatically achieved by `isort`.
 
 ```python
 isort --recursive mypkg

@@ -1,9 +1,0 @@
-channels:
-  - defaults
-dependencies:
-  - pytest
-  - pytest-cov
-  - sqlalchemy
-  - pip:
-    - janome
-    - toml

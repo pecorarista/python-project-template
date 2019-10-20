@@ -1,0 +1,13 @@
+[run]
+omit = tests/*
+
+[report]
+omit =
+    */__init__.py
+    */__main__.py
+    */main.py
+exclude_lines =
+    pragma: no cover
+    if __name__ == "__main__":
+    if __name__ == '__main__':
+show_missing = True

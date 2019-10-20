@@ -1,6 +1,6 @@
 import sys
-from nyan.main import main
 
+from mypkg.main import main
 
 if __name__ == '__main__':
     sys.exit(main())

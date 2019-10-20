@@ -1,63 +1,27 @@
-import sys
 import argparse
+import sys
 
-from nyan.__version__ import __version__
-from nyan.cat import Cat, Sexes
+from sqlalchemy import create_engine
+from sqlalchemy.orm.session import sessionmaker
+
+from mypkg.preprocessing.corpus import import_documents
 
 
-def main():
-    """Main function that is called when the package is used as a CLI tool
-    """
-
-    default_cat = Cat()
+def main() -> None:
 
     parser = argparse.ArgumentParser()
-
-    parser.add_argument("-v",
-                        "--version",
-                        action='store_true',
-                        help="breed of your cat")
-
-    parser.add_argument("-b",
-                        "--breed",
+    parser.add_argument('-d',
+                        '--dir-corpus',
                         type=str,
-                        default=default_cat.breed,
-                        help="breed of your cat")
-
-    parser.add_argument("-n",
-                        "--name",
-                        type=str,
-                        default=default_cat.name,
-                        help="name of your cat")
-
-    parser.add_argument("-a",
-                        "--age",
-                        type=int,
-                        default=default_cat.age,
-                        help="age of your cat")
-
-    parser.add_argument("-s",
-                        "--sex",
-                        type=str,
-                        default=default_cat.sex,
-                        choices=[sex.value for sex in list(Sexes)],
-                        help="sex of your cat")
+                        required=True,
+                        metavar='DIR',
+                        help='Directory which contains corpus files')
 
     args = parser.parse_args()
 
-    if args.version:
-        print("Nyan version {}".format(__version__))
-        sys.exit()
+    engine = create_engine(config.db_uri)
+    Base.metadata.create_all(engine)
+    SessionMaker = sessionmaker(bind=engine)
+    db_session = SessionMaker()
 
-    args = parser.parse_args()
-
-    cat = Cat(breed=args.breed,
-              name=args.name,
-              age=args.age,
-              sex=Sexes(args.sex))
-
-    print(cat.praise())
-
-
-if __name__ == '__main__':
-    sys.exit(main())
+    import_documents(session, dir_corpus)
