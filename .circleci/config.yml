@@ -2,16 +2,10 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.7.4-buster
+      - image: pecorarista/pipenv
         user: circleci
     steps:
       - checkout
-      - run:
-          name: Install pipenv
-          command: |
-            sudo apt update -y
-            sudo apt upgrade -y
-            sudo apt install pipenv
       - run:
           name: Print the working directory
           command: pwd
