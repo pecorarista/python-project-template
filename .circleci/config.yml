@@ -19,9 +19,8 @@ jobs:
           name: Show who I am
           command: whoami
       - run:
-          name: Create `.env`
-          command: |
-            echo "WORKON_HOME=/home/circleci/.pipenv/python-project-template\nPIPENV_CACHE_DIR=/home/circleci/.pipenv-cache\n" > .env
+          name: Export environment variables
+          command: echo -e 'PIPENV_VENV_IN_PROJECT=1\nPIPENV_CACHE_DIR="/home/circleci/.pipenv-cache"' > .env
       - restore_cache:
           keys:
             - python-project-template-{{ checksum "Pipfile.lock" }}
@@ -31,18 +30,14 @@ jobs:
       - save_cache:
           key: python-project-template-{{ checksum "Pipfile.lock" }}
           paths:
-            - /home/circleci/.pipenv/python-project-template
+            - /home/circleci/project/.venv
             - /home/circleci/.pipenv-cache
       - run:
           name: Check formats
           command: |
-            pipenv shell
-            flake8 mypkg
-            flake8 tests
-            isort --recursive --check-only mypkg
-            isort --recursive --check-only tests
+            pipenv run flake8 mypkg tests
+            pipenv run isort --recursive --check-only mypkg tests
       - run:
           name: Run unit tests
           command: |
-            pipenv shell
-            pytest
+            pipenv run pytest

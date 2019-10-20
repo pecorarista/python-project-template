@@ -11,8 +11,7 @@ isort = "*"
 pytest = "*"
 pytest-cov = "*"
 toml = "*"
-Janome = "*"
 SQLAlchemy = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.7.4"

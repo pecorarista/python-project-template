@@ -1,11 +1,11 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "7cd33c53a054c9b2e8b16496fd87ba1891b5f2212fee399c09e63a69769630b3"
+            "sha256": "12d4d255ca824b9d7f29ff6bb5c73ebd10594ce215f813dc7b7bdf7b495bc89d"
         },
         "pipfile-spec": 6,
         "requires": {
-            "python_version": "3.7"
+            "python_version": "3.7.4"
         },
         "sources": [
             {
@@ -97,14 +97,6 @@
             ],
             "index": "pypi",
             "version": "==4.3.21"
-        },
-        "janome": {
-            "hashes": [
-                "sha256:3da9ba0bdfa153c126f72d9ac9fa51646f209032d7098eec96f985a77a4da3b4",
-                "sha256:acbf82b0ed3c3b797f91f18bdc90347f7baed9aab39e4f21d89ff6aef220180f"
-            ],
-            "index": "pypi",
-            "version": "==0.3.9"
         },
         "mccabe": {
             "hashes": [
