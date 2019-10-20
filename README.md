@@ -3,11 +3,11 @@
 Template for Python projects. The sample package is assumed to be released as a CLI tool.
 
 ## Environment
+Install dependencies by `pipenv`.
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+pipenv install
+pipenv shell
 ```
 
 ## Coding Style
@@ -34,7 +34,7 @@ from mypkg.another_module import another_function
 
 This is automatically achieved by `isort`.
 
-```python
+```bash
 isort --recursive mypkg
 isort --recursive tests
 ```
@@ -43,7 +43,7 @@ isort --recursive tests
 
 Test the source code before merging your changes into the master branch.
 
-```python
+```bash
 pytest
 ```
 

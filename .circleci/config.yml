@@ -2,11 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: pecorarista/conda-nlp-japanese
-      - image: postgres:9.6
-        environment:
-          POSTGRES_USER: nlp
-          POSTGRES_DB: test_db
+      - image: kennethreitz/pipenv
+        user: circleci
     steps:
       - checkout
       - run:
@@ -15,31 +12,23 @@ jobs:
       - run:
           name: Show who I am
           command: whoami
+      - run:
+          name: Create `.env`
+          command: echo "WORKON_HOME=/home/circleci/pipenv\n" > .env
       - restore_cache:
           keys:
-            - python-project-template-{{ checksum "environment-fixed.yaml" }}
+            - python-project-template-{{ checksum "Pipfile.lock" }}
       - run:
           name: Create an environment
-          command: |
-            if [ ! -d /opt/nlp/.conda/envs/circleci ]
-            then
-                conda env create -f environment-fixed.yaml -n circleci --quiet
-            fi
+          command: pipenv install
       - save_cache:
-          key: python-project-template-{{ checksum "environment-fixed.yaml" }}
+          key: python-project-template-{{ checksum "Pipfile.lock" }}
           paths:
-            - /opt/nlp/.conda
-      - run:
-          name: Create `config.toml`
-          command: |
-            cat example.toml \
-              | sed -e "s#^uri = 'postgresql://ubuntu@localhost:5432/DB'\$#uri = 'postgresql://nlp@localhost:5432/test_db'#" \
-              | tee config.toml
+            - /home/circleci/pipenv
       - run:
           name: Check formats
           command: |
-            source /opt/conda/etc/profile.d/conda.sh
-            conda activate circleci
+            source /home/circleci/pipenv/bin/activate
             flake8 mypkg
             flake8 tests
             isort --recursive --check-only mypkg
@@ -47,7 +36,5 @@ jobs:
       - run:
           name: Run unit tests
           command: |
-            source /opt/conda/etc/profile.d/conda.sh
-            conda activate circleci
-            # pytest --run-slow
+            source /home/circleci/pipenv/bin/activate
             pytest
