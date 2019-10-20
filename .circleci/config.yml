@@ -20,7 +20,10 @@ jobs:
           command: whoami
       - run:
           name: Export environment variables
-          command: echo -e 'PIPENV_VENV_IN_PROJECT=1\nPIPENV_CACHE_DIR="/home/circleci/.pipenv-cache"' > .env
+          command: echo -e 'PIPENV_VENV_IN_PROJECT=1\n' > .env
+      - run:
+          name: Create `config.toml`
+          command: cp example.toml config.toml
       - restore_cache:
           keys:
             - python-project-template-{{ checksum "Pipfile.lock" }}
@@ -31,7 +34,7 @@ jobs:
           key: python-project-template-{{ checksum "Pipfile.lock" }}
           paths:
             - /home/circleci/project/.venv
-            - /home/circleci/.pipenv-cache
+            - /home/circleci/.cache/pipenv
       - run:
           name: Check formats
           command: |
