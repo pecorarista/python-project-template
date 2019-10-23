@@ -5,3 +5,6 @@ __pycache__
 resources/*
 !resources/corpora/lyrics/greensleeves.txt
 .venv/
+
+*.toml
+!example.toml
