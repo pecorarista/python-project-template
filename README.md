@@ -1,12 +1,13 @@
 # python-project-template
+[![CircleCI](https://circleci.com/gh/pecorarista/python-project-template.svg?style=svg)](https://circleci.com/gh/pecorarista/python-project-template)
 
-Template for Python projects. The sample package is assumed to be released as a CLI tool.
+A template for Python projects. This sample package is assumed to be released as a CLI tool.
 
 ## Environment
 Install dependencies by `pipenv`.
 
 ```bash
-pipenv install
+pipenv install  # Add `--dev` for development 
 pipenv shell
 ```
 

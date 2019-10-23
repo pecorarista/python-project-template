@@ -13,9 +13,6 @@ jobs:
           name: Show who I am
           command: whoami
       - run:
-          name: Export environment variables
-          command: echo -e 'PIPENV_VENV_IN_PROJECT=1\n' > .env
-      - run:
           name: Create `config.toml`
           command: cp example.toml config.toml
       - restore_cache:
@@ -23,7 +20,9 @@ jobs:
             - python-project-template-{{ checksum "Pipfile.lock" }}
       - run:
           name: Create an environment
-          command: pipenv install
+          command: pipenv sync --dev
+          environment:
+            PIPENV_VENV_IN_PROJECT: 1
       - save_cache:
           key: python-project-template-{{ checksum "Pipfile.lock" }}
           paths:
