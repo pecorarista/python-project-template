@@ -11,6 +11,12 @@ pipenv install  # Add `--dev` for development
 pipenv shell
 ```
 
+## How to Use
+```bash
+cp example.toml config.toml
+pipenv run python -m mypkg -d resources/corpora
+```
+
 ## Coding Style
 
 Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/).

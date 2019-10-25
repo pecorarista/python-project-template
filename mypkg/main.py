@@ -1,10 +1,11 @@
 import argparse
+from pathlib import Path
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm.session import sessionmaker
 
 from mypkg.database.model import Base
-from mypkg.preprocessing.corpus import import_documents
+from mypkg.preprocessing.corpus import import_corpora
 from mypkg.util.config import Config
 
 
@@ -28,9 +29,9 @@ def main() -> None:
     args = parser.parse_args()
     config = Config(args.config)
 
-    engine = create_engine(config.db_uri)
+    engine = create_engine(config.db.uri)
     Base.metadata.create_all(engine)
     SessionMaker = sessionmaker(bind=engine)
     db_session = SessionMaker()
 
-    import_documents(db_session, args.dir_corpus)
+    import_corpora(db_session, Path(args.dir_corpus))

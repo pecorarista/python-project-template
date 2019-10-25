@@ -9,7 +9,7 @@ from mypkg.database.model import Document
 def import_corpora(db_session: Session, dir_corpus: Path) -> None:
 
     mappings = []
-    for dest_corpus in dir_corpus.glob('**/*'):
+    for dest_corpus in dir_corpus.glob('**/*.txt'):
         with dest_corpus.open(mode='r') as f:
             mapping = {
                 'name': str(dest_corpus),
